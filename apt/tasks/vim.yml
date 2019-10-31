@@ -1,0 +1,36 @@
+---
+- name: Install necessary vim 
+  apt:
+    name: "vim"
+    state: latest
+
+- name: Create autoload
+  file:
+    recurse: yes
+    path: "/home/{{ user }}/.vim/autoload"
+    mode: '0755'
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
+- name: Create bundler
+  file:
+    recurse: yes
+    path: "/home/{{ user }}/.vim/bundle"
+    mode: '0755'
+    owner: "{{ user }}"
+    group: "{{ user }}"
+ 
+- name: Download file with custom HTTP headers
+  get_url:
+    url: https://tpo.pe/pathogen.vim
+    dest: "/home/{{ user }}/.vim/autoload/pathogen.vim"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
+- name: Configure vim
+  template:
+    src: templates/vimrc.j2
+    dest: "/home/{{ user }}/.vimrc"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+

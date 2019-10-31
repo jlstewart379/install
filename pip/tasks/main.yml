@@ -1,0 +1,11 @@
+---
+# tasks file for python
+- name: Get the pip3 binary
+  command: which pip3
+  register: pip3_bin
+
+- name: Install awscli
+  pip:
+    name: awscli
+    state: latest
+    executable: "{{ pip3_bin.stdout }}"
