@@ -8,5 +8,18 @@
 - name: Install Zoom
   apt:
     deb: /tmp/zoom_amd64.deb
+
+- name: Install Terraform
+  get_url: 
+    url: "https://releases.hashicorp.com/terraform/0.12.9/terraform_{{ terraform.version }}_linux_amd64.zip"
+    dest: "/tmp/terraform_{{ terraform.version }}_linux_amd64.zip"
+  tags: terraform
+
+- name: Extract Terraform binary
+  unarchive:
+    src: "/tmp/terraform_{{ terraform.version }}_linux_amd64.zip"
+    dest: "/usr/bin/"
+  tags: terraform
+  
   
   

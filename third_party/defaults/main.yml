@@ -1,2 +1,4 @@
 ---
 # defaults file for third_party
+terraform:
+  version: 0.12.9

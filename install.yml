@@ -9,8 +9,8 @@
         name: "{{ role_item }}"
 
       loop:
-       # - apt
-       # - pip 
+        - apt
+        - pip 
         - third_party
       loop_control:
         loop_var: role_item
