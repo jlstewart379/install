@@ -1,5 +1,4 @@
 ---
-
 - name: Download Zoom
   get_url:
     url: https://zoom.us/client/latest/zoom_amd64.deb
@@ -20,6 +19,16 @@
     src: "/tmp/terraform_{{ terraform.version }}_linux_amd64.zip"
     dest: "/usr/bin/"
   tags: terraform
+
+- name: Download sops
+  get_url:
+    url: "https://github.com/mozilla/sops/releases/download/3.4.0/sops_3.4.0_amd64.deb"
+    dest: "/tmp/sops_3.0.0_amd64.deb"
+
+- name: Install sops
+  apt:
+    deb: "/tmp/sops_3.0.0_amd64.deb"
+
   
   
   
